@@ -1,4 +1,4 @@
-package com.activemesa.solid.lsp;
+package liskov_subsutition_principle;
 
 class Rectangle
 {
