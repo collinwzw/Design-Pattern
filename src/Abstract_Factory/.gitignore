@@ -1,0 +1,13 @@
+/Coffee.class
+/HotDrink.class
+/Tea.class
+/HotDrinkFactory.class
+/TeaFactory.class
+/CoffeeFactory.class
+/Demo.class
+/HotDrinkFactories.class
+/AbstractFactoryDemo.class
+/HotDrinkMachine$AvailableDrink.class
+/HotDrinkMachine.class
+/IHotDrink.class
+/IHotDrinkFactory.class
