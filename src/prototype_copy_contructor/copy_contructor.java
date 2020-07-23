@@ -50,7 +50,7 @@ class Demo{
 		chris.address.country = "Canada";
 		System.out.println(john);
 		System.out.println(chris);
-		
+		// limitation: we have to build copy contructor for every single type we have. 
 	}
 	
 }
