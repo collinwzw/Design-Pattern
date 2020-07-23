@@ -47,8 +47,10 @@ class Demo{
 		Employee chris = new Employee(john);
 		chris.name = "Chris";
 		chris.address.city = "Montreal";
+		chris.address.country = "Canada";
 		System.out.println(john);
 		System.out.println(chris);
+		
 	}
 	
 }
