@@ -41,6 +41,6 @@ class Serialization_Problem{
 		System.out.println(bs.getValue());
 
 		System.out.println(bs2.getValue());
-		
+		//example of creating the singleton object through the serialization
 	}
 }

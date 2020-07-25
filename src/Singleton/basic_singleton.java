@@ -20,6 +20,11 @@ class BasicSingleton implements Serializable{
 	public void setValue(int value) {
 		this.value = value;
 	}
+	//the method that can let JVM realize the serialization has to be happened in this object
+	//protected Object readResolve()
+	//{
+	//	return INSTANCE;
+	//}
 }
 
 class Demo{
