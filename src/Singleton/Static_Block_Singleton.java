@@ -13,7 +13,7 @@ class StaticBlockSingleton
 	
 	private static StaticBlockSingleton instance;
 	
-	static	// this static block is example when we need to throw exception in singleton constructor  
+	static	// this static block is example when we need to throw exception in singleton constructor   
 	{
 		try
 		{
