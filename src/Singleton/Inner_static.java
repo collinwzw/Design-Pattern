@@ -17,5 +17,6 @@ class InnerStaticSingleton
 	}
 }
 
+//called inner static singleton class
 //thread safety
 //guarantee single object will be initialized
