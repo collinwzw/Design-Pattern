@@ -84,6 +84,8 @@ class Solution {
            for(int[] nei: map.get(city[0])) {
                if(city[2] + 1 > K) continue;
                int[] new_node = new int[] {nei[0], city[1] + nei[1], city[2] + 1};
+           		System.out.println("the desitination is=" + nei[0] + " and the price is " + (city[1] + nei[1]) + " with " + (city[2] + 1) + " stops");
+
                q.offer(new_node);
            }
         }
