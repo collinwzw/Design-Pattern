@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+class Solution787 {
     
     static class Edge {
         int source;
@@ -101,7 +101,7 @@ class Demo787
 	public static void main(String[] args)
 	{	
 		int[][] graph = {{0,1,100},{1,2,100},{0,2,500}};
-		Solution s = new Solution();
+		Solution787 s = new Solution787();
 		int result = s.findCheapestPrice(3,graph,0,2,1);
 		System.out.println(result);
 		}
