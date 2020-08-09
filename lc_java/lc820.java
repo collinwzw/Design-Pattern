@@ -1,28 +1,53 @@
-class Solutionlc820 {
+class Solution {
     public int minimumLengthEncoding(String[] words) {
-        
-    	//put the Strings into a result string
-    	//check the last char of result string matches the last character of incoming words
-    	// if reach the first char of incoming word, then we know it's part of it.
-    	 StringBuilder str = new StringBuilder("");
-    	 str.append(words[0]);
-    	for(int i = 1; i<words.length;i++)
-    	{
-    		//System.out.println(str);
-    		//str.append("#");
-    		//System.out.println(str.substring(str.length()-words[i].length()));
-    		//System.out.println(str.substring(str.length()-words[i].length()) == words[i]);
-    		if (str.length() > words[i].length() &&str.substring(str.length()-words[i].length()).equals( words[i])){
-    			str.append("#");
-    		}
-    		else
-    		{
-    			str.append("#" + words[i]);
-    		}
-    		
-    	}
-    	
-    	return str.length();
+        Arrays.sort(words, (a, b) -> b.length() - a.length());
+        int res = 0;
+        TrieNode root = new TrieNode();
+        for(String s : words){
+            if(tryInsert(s, root)){
+               res += s.length() + 1; 
+            }
+        }
+        return res;
+    }
+    
+    private boolean tryInsert(String s, TrieNode root){
+        boolean res = false;
+        char[] arr = s.toCharArray();
+        TrieNode curr = root;
+        for(int i = arr.length - 1; i >= 0; i--){
+            if(!curr.containsKey(arr[i])){
+                res = true;
+                curr.put(arr[i], new TrieNode());
+            }
+            curr = curr.get(arr[i]);
+        }
+        return res;
+    }
+}
+
+class TrieNode{
+    
+    private final int R = 26;
+    
+    private TrieNode[] links;
+    
+    private boolean isEnd;
+    
+    public TrieNode(){
+        links = new TrieNode[R];
+    }
+    
+    public boolean containsKey(char key){
+        return links[key - 'a'] != null;
+    }
+    
+    public TrieNode get(char key){
+        return links[key - 'a'];
+    }
+    
+    public void put(char key, TrieNode node){
+        links[key - 'a'] = node;
     }
 }
 
