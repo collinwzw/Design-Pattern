@@ -5,11 +5,6 @@ class Solution1471 {
     	int m_index = (arr.length - 1)/2;
     	Arrays.sort(arr);
     	
-//    	for (int element: arr)
-//    	{
-//    		System.out.print(element + ", ");
-//    	}
-    	
     	int m = arr[m_index];
     	int[] result = new int[k];
     	int p_s = 0;
