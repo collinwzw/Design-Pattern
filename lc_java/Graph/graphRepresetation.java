@@ -98,19 +98,20 @@ class DemoGraph
 		Graph g = new Graph();
 		
 		boolean[] visited= new boolean[6];
-		
+		boolean[] cycle= new boolean[6];
 		for(int i = 0; i < visited.length;i++)
 		{
 			visited[i] = false;
+			cycle[i] = false;
 		}
 		
-		int[][] directedUnweightedEdges = {{0,1},{1,2}, {2,3}, {1,4},{3,5}};
+		int[][] directedUnweightedEdges = {{0,1},{1,2}, {2,3}, {1,4},{3,0}};
 		Map directedUnweightedgraph = g.buildDirectedGraphWithoutWeight(directedUnweightedEdges);
 		//g.printUnweightedGraph(directedUnweightedgraph);
 		GraphTraversalMethod gtm = new GraphTraversalMethod();
 		//gtm.DFSRecursive(directedUnweightedgraph, 0, visited);
 		//gtm.DFSInterative(directedUnweightedgraph, 0);
-		gtm.BFSInterative(directedUnweightedgraph, 0);
+		System.out.println(gtm.DFSRecursiveDetectCycle(directedUnweightedgraph, 0,visited,cycle));
 		
 		int[][] undirectedUnweightedEdges = {{0,1},{1,2}, {2,3}, {3,4}};
 		Map undirectedUnweightedgraph = g.buildUndirectedGraphWithoutWeight(directedUnweightedEdges);
