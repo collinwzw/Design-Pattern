@@ -1,6 +1,7 @@
 package Graph;
 
 import java.util.Map;
+import java.util.Stack;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 
 class Graph // assume input is list of int[] vertices
 {
-	public Map buildDirectedGraphWithoutWeight(int[][] edges) // No weight
+	public Map<Integer, List<Integer>> buildDirectedGraphWithoutWeight(int[][] edges) // No weight
 	{
 		Map<Integer, List<Integer>> map = new HashMap<>();
 		
@@ -28,7 +29,7 @@ class Graph // assume input is list of int[] vertices
 		return map;
 	}
 	
-	public Map buildUndirectedGraphWithoutWeight(int[][] edges) // No weight
+	public Map<Integer, List<Integer>> buildUndirectedGraphWithoutWeight(int[][] edges) // No weight
 	{
 		Map<Integer, List<Integer>> map = new HashMap<>();
 		
@@ -49,7 +50,7 @@ class Graph // assume input is list of int[] vertices
 		return map;
 	}
 	
-	public Map buildWeightedDirectedGraph(int[][] edges) //  weighted
+	public Map<Integer, List<int[]>> buildWeightedDirectedGraph(int[][] edges) //  weighted
 	{
 		Map<Integer, List<int[]>> map = new HashMap<>();
 		
@@ -65,7 +66,7 @@ class Graph // assume input is list of int[] vertices
 		return map;
 	}
 	
-    static void printUnweightedGraph(Map<Integer,List<Integer>> graph) 
+    public static void printUnweightedGraph(Map<Integer,List<Integer>> graph) 
     { 
         for (Integer i:  graph.keySet()) { 
             System.out.println("\nAdjacency list of vertex" + i); 
@@ -76,7 +77,7 @@ class Graph // assume input is list of int[] vertices
             System.out.println(); 
         } 
     } 
-    static void printWeightedGraph(Map<Integer,List<int[]> > graph) 
+    public static void printWeightedGraph(Map<Integer,List<int[]> > graph) 
     { 
         for (Integer i:  graph.keySet()) { 
             System.out.println("\nAdjacency list of vertex " + i); 
@@ -105,16 +106,26 @@ class DemoGraph
 			cycle[i] = false;
 		}
 		
-		int[][] directedUnweightedEdges = {{0,1},{1,2}, {2,3}, {1,4},{3,0}};
-		Map directedUnweightedgraph = g.buildDirectedGraphWithoutWeight(directedUnweightedEdges);
-		//g.printUnweightedGraph(directedUnweightedgraph);
+		int[][] directedUnweightedEdges = {{0,1},{1,2}, {2,3}, {1,4},{3,4},{1,5},{2,5},{3,5},{4,5}};
 		GraphTraversalMethod gtm = new GraphTraversalMethod();
+		Map<Integer, List<Integer>> directedUnweightedgraph = g.buildDirectedGraphWithoutWeight(directedUnweightedEdges);
+		//g.printUnweightedGraph(directedUnweightedgraph);
 		//gtm.DFSRecursive(directedUnweightedgraph, 0, visited);
 		//gtm.DFSInterative(directedUnweightedgraph, 0);
-		System.out.println(gtm.DFSRecursiveDetectCycle(directedUnweightedgraph, 0,visited,cycle));
+		TopologicSorting ts = new TopologicSorting();
+		if (!gtm.DFSRecursiveDirectedGraphDetectCycle(directedUnweightedgraph, 0, visited, cycle)) //detect cycle
+		{
+			Stack<Integer> r = ts.topologicSorting(directedUnweightedgraph);
+			System.out.print(r);
+		}
+
+		
 		
 		int[][] undirectedUnweightedEdges = {{0,1},{1,2}, {2,3}, {3,4}};
-		Map undirectedUnweightedgraph = g.buildUndirectedGraphWithoutWeight(directedUnweightedEdges);
+		Map<Integer, List<Integer>> undirectedUnweightedgraph = g.buildUndirectedGraphWithoutWeight(undirectedUnweightedEdges);
+		//g.printUnweightedGraph(undirectedUnweightedgraph);
+		//System.out.println(gtm.DFSRecursiveUndirectedGraphDetectCycle(undirectedUnweightedgraph, 0,visited,cycle,0));
+
 
 		int[][] directedWeightedEdges = {{0,1,5},{1,2,10}, {2,3,3}, {3,4,9}};
 		Map directedWeightedGraph = g.buildWeightedDirectedGraph(directedWeightedEdges);

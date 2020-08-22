@@ -54,8 +54,10 @@ class GraphTraversalMethod
 		}
 	}
 	
-	public boolean DFSRecursiveDetectCycle(Map<Integer,List<Integer>> graph, int startingVertice, boolean[] visited, boolean[] cycle)
+	public boolean DFSRecursiveDirectedGraphDetectCycle(Map<Integer,List<Integer>> graph, int startingVertice, boolean[] visited, boolean[] cycle)
 	{
+		visited[startingVertice] = true;
+		cycle[startingVertice] = true;
 		System.out.println("visiting the vertex " + startingVertice + ".");
 		for(Integer dest: graph.get(startingVertice))
 		{	
@@ -67,17 +69,50 @@ class GraphTraversalMethod
 			if(visited[dest] == false) // the vertex is not visited yet
 			{
 				cycle[dest] =true;
-				visited[dest] = true;
-				if (DFSRecursiveDetectCycle(graph,dest,visited,cycle))
+				if (DFSRecursiveDirectedGraphDetectCycle(graph,dest,visited,cycle))
 				{
 					return true;
 				}
-				visited[dest] = false;
+				
 			}
 			
 		}
+		cycle[startingVertice] = false;
 		return false;
 	}
+	
+	public boolean DFSRecursiveUndirectedGraphDetectCycle(Map<Integer,List<Integer>> graph, int startingVertice, boolean[] visited, boolean[] cycle, int parent)
+	{	
+		visited[startingVertice] = true;
+		cycle[startingVertice] =true;
+		System.out.println("visiting the vertex " + startingVertice + ".");
+		for(Integer dest: graph.get(startingVertice))
+		{	
+			if (dest == parent)
+			{
+				continue;
+			}
+			if (cycle[dest] == true)
+			{
+				return true;
+			}
+			
+			if(visited[dest] == false) // the vertex is not visited yet
+			{
+				
+
+				if (DFSRecursiveUndirectedGraphDetectCycle(graph,dest,visited,cycle,startingVertice))
+				{
+					return true;
+				}
+				
+			}
+			
+		}
+		cycle[startingVertice] = false;
+		return false;
+	}
+	
 	public void BFSInterative(Map<Integer,List<Integer>> graph, int startingVertice)	//iterative
 	{
 		Queue<Integer> q = new LinkedList<>();
