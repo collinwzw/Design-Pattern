@@ -3,3 +3,11 @@ class Solution792 {
         
     }
 }
+
+class Demo792
+{
+	public static void main(String[] args)
+	{
+		
+	}
+}
