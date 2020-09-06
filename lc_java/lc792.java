@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class Solution792 {
 	public int numMatchingSubseq(String s, String[] words) {
         int res = 0, cur, i;
