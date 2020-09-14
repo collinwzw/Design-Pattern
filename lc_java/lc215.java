@@ -60,6 +60,7 @@ class Demo215
 		int[] input = {3,2,3,1,2,4,5,5,6};
 		Solution215 s = new Solution215();
 		int r = s.findKthLargest(input, 2);
+		
 		System.out.println();
 		System.out.println("answer = " + r);
 		for (int element: input)
