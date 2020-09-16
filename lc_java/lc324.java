@@ -33,7 +33,7 @@ class Demo324
 {
 	public static void main(String[] args)
 	{	
-		int[] input = {1,1,2,1,2,2,1};
+		int[] input = {3,5,22,11,9,5,7};
 		Solution324 s = new Solution324();
 		s.wiggleSort(input);
 		System.out.println();
