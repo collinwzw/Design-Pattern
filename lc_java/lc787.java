@@ -106,3 +106,58 @@ class Demo787
 		System.out.println(result);
 		}
 }
+
+
+//import java.util.*;
+//class Solution {
+//    public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
+//        // 1. store the vertices as key of hash map, value is the vertices that can connect
+//        // to plus the prices List<int[]>
+//        int[] dp = new int[n];
+//        for(int i = 0; i < n; i++) dp[i] = 9999999;
+//        
+//        Map<Integer, List<int[]>> map = new HashMap<>();
+//        for (int i = 0; i < n; i++) {
+//            List<int[]> l = new ArrayList<>();
+//            map.put(i, l);
+//        }
+//        
+//        for (int i = 0; i< flights.length; i++){
+//                map.get(flights[i][0]).add(new int[] {flights[i][1], flights[i][2]});
+//        }
+//        //System.out.println(map.toString());
+//        
+//        Queue<int[]> s = new LinkedList<>();
+//        s.offer(new int[] {src,0 , -1});
+//        dp[src] = 0;
+//        while (s.size() > 0){
+//
+//            int[] curr = s.poll();
+//            //System.out.println("popping " + Arrays.toString(curr));
+//            int curr_city = curr[0];
+//            int curr_price = curr[1];
+//            int curr_stops = curr[2];
+//            
+//            if (curr_stops < K+ 1){
+//                dp[curr_city] = Math.min(dp[curr_city], curr_price);
+//            }
+//            else{
+//                break;
+//            }
+//            
+//            for(int[] dest: map.get(curr_city)){
+//                
+//                int dest_city = dest[0];
+//                int dest_price = dest[1];
+//                if ( dp[dest_city] > curr_price + dest_price  ){
+//                    //System.out.println(Arrays.toString(dest));
+//                    //System.out.println(Arrays.toString(curr));
+//                    s.offer(new int[] {dest_city, curr_price + dest_price, curr_stops + 1});
+//                }
+//            }
+//        }
+//        // 
+//        if (dp[dst] == 9999999 ) return -1;
+//        return dp[dst];
+//    }
+//}
