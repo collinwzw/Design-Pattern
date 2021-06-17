@@ -82,7 +82,7 @@ class Subset {
     
     for(int i = index; i < nums.length; i++){
       tempList.add(nums[i]);
-      helper(index+1, tempList, ans, nums);
+      helper(i+1, tempList, ans, nums);
       tempList.remove(tempList.size()-1);
     }
     
